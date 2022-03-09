@@ -1,0 +1,11 @@
+{
+  "name": "rediris-es/simplesamlphp-module-idpnube-skin",
+  "description": "SIR2 simpleSAMLphp theme",
+  "minimum-stability": "stable",
+  "type": "simplesamlphp-module",
+  "license": "LGPL-2.1",
+  "keywords": [ "simplesamlphp", "skin", "SIR2", "IdP" , "idpnube", "material"],
+  "require": {
+    "components/jquery": "3.6.0"
+  }
+}
