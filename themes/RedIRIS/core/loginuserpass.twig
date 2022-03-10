@@ -94,8 +94,7 @@
 
 						<form class="pure-form pure-form-aligned center-form" action="?" method="post" name="f">
 						
-							<!-- <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz"> -->
-							<div class="wrap-input100">
+							<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
 							
 								<input id="username" class="input100" {{ forceUsername ? 'disabled' }} placeholder="Nombre usuario" type="text" name="username"
 									   {%- if not forceUsername %} tabindex="1" value="{{ username }}" autocomplete="username" {% endif %}
@@ -119,8 +118,9 @@
 							</div>
 							
 							
-							<div class="flex-sb-m w-full p-t-3 p-b-32">
+							<div class="flex-sb-m flex-row-reverse w-full p-t-3 p-b-32">
 							
+<!--
 								{% if rememberMeEnabled -%}
 								
 								<div class="contact100-form-checkbox">
@@ -133,6 +133,7 @@
 								</div>
 								
 								{%- endif %}
+-->
 								
 								<div>
 									<a href="/" class="txt1">
@@ -226,6 +227,7 @@
         <script src="{{ asset('vendor/vegas/vegas.min.js', 'theme-RedIRIS') }}"></script>
         <!--===============================================================================================-->
         <script src="{{ asset('js/main.js', 'theme-RedIRIS') }}"></script>
+	<script src="{{ asset('js/loginuserpass.js', 'core') }}"></script>
      
         <script>
             $("#slider").vegas({
