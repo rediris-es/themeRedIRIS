@@ -676,3 +676,13 @@ div#currentTokens {
 .loginSide{
   width: 70%;
 }
+
+#logo{
+
+  max-width: 250px;
+}
+
+.logo-footer{
+
+  max-width: 220px;
+}
