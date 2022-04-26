@@ -1,9 +1,9 @@
 <!-- theme header -->
 
 {% block postload %}
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/util.css','theme-RedIRIS') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css','theme-RedIRIS') }}" />
-    <script src="{{ asset('js/main.js','theme-RedIRIS') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/util.css','themeRedIRIS') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css','themeRedIRIS') }}" />
+    <script src="{{ asset('js/main.js','themeRedIRIS') }}"></script>
 
 {% endblock %}
 
@@ -12,7 +12,7 @@
     <div class="left">
       <div class="v-center logo-header">
         <div id="logo">
-          <img class="pure-img" height="30px" src="{{ asset('images/logo/logo.svg','theme-RedIRIS') }}" alt="{% trans %}Logo{% endtrans %}">
+          <img class="pure-img" height="30px" src="{{ asset('images/logo/'~ logo, 'themeRedIRIS') }}" alt="{% trans %}Logo{% endtrans %}" />
         </div>
       </div>
     </div>

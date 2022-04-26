@@ -1,38 +1,37 @@
 {% set pagetitle = 'Enter your username and password'|trans %}
 
 <!DOCTYPE html>
-  
 <html lang="es">
     <head>
         <title>{{ pagetitle }}</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!--===============================================================================================-->	
-        <link rel="icon" type="image/png" href="{{ asset('images/icons/favicon.ico', 'theme-RedIRIS') }}"/>
         <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css', 'theme-RedIRIS') }}">
+        <link rel="icon" type="image/png" href="{{ asset('images/icons/favicon.ico', 'themeRedIRIS') }}"/>
         <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/bootstrap-icons/bootstrap-icons.css', 'theme-RedIRIS') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css', 'themeRedIRIS') }}">
         <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="{{ asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css', 'theme-RedIRIS') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/bootstrap-icons/bootstrap-icons.css', 'themeRedIRIS') }}">
         <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="{{ asset('fonts/Linearicons-Free-v1.0.0/icon-font.min.css', 'theme-RedIRIS') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css', 'themeRedIRIS') }}">
         <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/animate/animate.compat.css', 'theme-RedIRIS') }}">
-        <!--===============================================================================================-->	
-        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/css-hamburgers/hamburgers.min.css', 'theme-RedIRIS') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('fonts/Linearicons-Free-v1.0.0/icon-font.min.css', 'themeRedIRIS') }}">
         <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/animsition/css/animsition.min.css', 'theme-RedIRIS') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/animate/animate.compat.css', 'themeRedIRIS') }}">
         <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/select2/select2.min.css', 'theme-RedIRIS') }}">
-        <!--===============================================================================================-->	
-        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/daterangepicker/daterangepicker.css', 'theme-RedIRIS') }}">
-        <!--===============================================================================================-->	
-        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/vegas/vegas.css', 'theme-RedIRIS') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/vegas/vegas.min.css', 'theme-RedIRIS') }}">        
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/css-hamburgers/hamburgers.min.css', 'themeRedIRIS') }}">
         <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/util.css', 'theme-RedIRIS') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css', 'theme-RedIRIS') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/animsition/css/animsition.min.css', 'themeRedIRIS') }}">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/select2/select2.min.css', 'themeRedIRIS') }}">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/daterangepicker/daterangepicker.css', 'themeRedIRIS') }}">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/vegas/vegas.css', 'themeRedIRIS') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/vegas/vegas.min.css', 'themeRedIRIS') }}">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/util.css', 'themeRedIRIS') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css', 'themeRedIRIS') }}">
         <!--===============================================================================================-->
 
     </head>
@@ -43,16 +42,16 @@
             <div class="container-login100">
                 <div class="wrap-login100 middle">
                     <div class="login100-form validate-form" >
-					
+
 					<div class="loginSide">
-					
+
                         <div class="login100-form-title p-b-43">
-                            <img src="{{ asset('images/logo/logo.svg', 'theme-RedIRIS') }}" width="200" />
+                            <img src="{{ asset('images/logo/'~ logo, 'themeRedIRIS') }}" width="200" />
                         </div>
 
                         <div class="text-justify p-b-20">
                             <span class="txt2">
-							
+
 							{%- if not isProduction %}
 
 								<div class="message-box warning">
@@ -61,14 +60,14 @@
 								  {#- #} a link that pointed you here, and you are not <i>a tester</i> you
 								  {#- #} probably got the wrong link, and should <b>not be here</b>.{% endtrans %}
 								</div>
-								
+
 							{% endif -%}
-							
+
 						    {% if errorcode -%}
-							
+
 								<div class="pure-g">
 									<div class="pure-u-1">
-									
+
 										<div class="message-box error">
 
 											{% set errtitles = errorcodes['title'] %}
@@ -85,45 +84,45 @@
 										</div>
 									</div>
 								</div>
-								
+
 							{%- endif %}
-							
+
                             </span>
-							
-                        </div>                        
+
+                        </div>
 
 
 						<form class="pure-form pure-form-aligned center-form" action="?" method="post" name="f">
-						
+
 							<div class="wrap-input100 {{ forceUsername ? '' : 'validate-input'}} " data-validate = "User is required">
-							
+
 								<input id="username" class="input100" {{ forceUsername ? 'disabled' }} placeholder="Nombre usuario" type="text" name="username"
 									   {%- if not forceUsername %} tabindex="1" value="{{ username }}" autocomplete="username" {% endif %}
 									   {%- if not forceUsername and not username %} autofocus {% endif %} >
 								<span class="focus-input100"></span>
 								<span class="label-input100"></span>
-								
+
 							</div>
-							
+
 							{%- for name, value in stateparams %}
 
 							<input type="hidden" name="{{ name }}" value="{{ value }}">
-							
+
 							{%- endfor %}
-							
+
 							<div class="wrap-input100 validate-input" data-validate="Password is required">
 								<input id="password" type="password" tabindex="2" name="password" class="input100" autocomplete="current-password" placeholder="Contraseña"
 								{%- if forceUsername or username %} autofocus {% endif %} >
 								<span class="focus-input100"></span>
 								<span class="label-input100"></span>
 							</div>
-							
-							
+
+
 							<div class="flex-sb-m flex-row-reverse w-full p-t-3 p-b-32">
-							
+
 <!--
 								{% if rememberMeEnabled -%}
-								
+
 								<div class="contact100-form-checkbox">
 									<input id="remember_me" type="checkbox" tabindex="5" class="input-checkbox100"
 											{{ rememberMeChecked ? 'checked="checked"' }} name="remember_me" value="Yes">
@@ -132,18 +131,18 @@
 										</label>
 									</label>
 								</div>
-								
+
 								{%- endif %}
 -->
-								
+
 								<div>
-									<a href="/" class="txt1">
+									<a {{ 'href=' ~ cambiador }} class="txt1">
 										{{ 'He olvidado mi contraseña'|trans }}
 									</a>
 								</div>
-								
+
 							</div>
-							
+
 							{% if organizations is defined -%}
 							<div class="pure-control-group">
 								<label class="txt1" for="organization">{{ 'Organization'|trans }}:</label>
@@ -155,18 +154,18 @@
 												{% set selected = '' -%}
 											{% endif -%}
 											{% if orgDesc -%}
-											
+
 												<label class="radioOrg txt1">
 													<input type="radio" name="organization" id="organization" value="{{ id }}" {{ selected }}>
-												
+
 														{{ orgDesc|trans }}
-													
-													
+
+
 												</label>
 											{% endif -%}
 									{% endfor %}
 								</div>
-								
+
 
 								{% if rememberOrganizationEnabled is defined -%}
 								<br>
@@ -181,25 +180,25 @@
 								{%- endif %}
 							</div> <!--pure-control-group-->
 							{%- endif %}
-			
+
 							<br>
-							
+
 							<div class="container-login100-form-btn">
 								<button class="login100-form-btn">
 									{% trans %}Login{% endtrans %}
 								</button>
 							</div>
-							
+
 							<div class="text-center p-t-46 p-b-8">
 								<span class="txt2">
 								</span>
 							</div>
 
 							<div class="login100-form-social flex-c-m">
-								<img src="{{ asset('images/logo/logo-feds.svg', 'theme-RedIRIS') }}" width="300" />
+								<img src="{{ asset('images/logo/logo-feds.svg', 'themeRedIRIS') }}" width="300" />
 							</div>
-													
-					
+
+
 						</form>
 					</div>
                     </div>
@@ -211,37 +210,32 @@
         </div>
 
         <!--===============================================================================================-->
-        <script src="{{ asset('vendor/jquery/jquery-3.6.0.js', 'theme-RedIRIS') }}"></script>
+        <script src="{{ asset('vendor/jquery/jquery-3.6.0.js', 'themeRedIRIS') }}"></script>
         <!--===============================================================================================-->
-        <script src="{{ asset('vendor/animsition/js/animsition.min.js', 'theme-RedIRIS') }}"></script>
+        <script src="{{ asset('vendor/animsition/js/animsition.min.js', 'themeRedIRIS') }}"></script>
         <!--===============================================================================================-->
-        <script src="{{ asset('vendor/bootstrap/js/popper.js', 'theme-RedIRIS') }}"></script>
+        <script src="{{ asset('vendor/bootstrap/js/popper.js', 'themeRedIRIS') }}"></script>
         <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
         <!--===============================================================================================-->
-        <script src="{{ asset('vendor/select2/select2.min.js', 'theme-RedIRIS') }}"></script>
+        <script src="{{ asset('vendor/select2/select2.min.js', 'themeRedIRIS') }}"></script>
         <!--===============================================================================================-->
-        <script src="{{ asset('vendor/daterangepicker/moment.min.js', 'theme-RedIRIS') }}"></script>
-        <script src="{{ asset('vendor/daterangepicker/daterangepicker.js', 'theme-RedIRIS') }}"></script>
+        <script src="{{ asset('vendor/daterangepicker/moment.min.js', 'themeRedIRIS') }}"></script>
+        <script src="{{ asset('vendor/daterangepicker/daterangepicker.js', 'themeRedIRIS') }}"></script>
         <!--===============================================================================================-->
-        <script src="{{ asset('vendor/countdowntime/countdowntime.js', 'theme-RedIRIS') }}"></script>
+        <script src="{{ asset('vendor/countdowntime/countdowntime.js', 'themeRedIRIS') }}"></script>
         <!--===============================================================================================-->
-        <script src="{{ asset('vendor/vegas/vegas.min.js', 'theme-RedIRIS') }}"></script>
+        <script src="{{ asset('vendor/vegas/vegas.min.js', 'themeRedIRIS') }}"></script>
         <!--===============================================================================================-->
-        <script src="{{ asset('js/main.js', 'theme-RedIRIS') }}"></script>
+        <script src="{{ asset('js/main.js', 'themeRedIRIS') }}"></script>
 	<script src="{{ asset('js/loginuserpass.js', 'core') }}"></script>
-     
+
         <script>
             $("#slider").vegas({
                 slides: [
-                    { src: "{{ asset('images/fondos/1.jpg', 'theme-RedIRIS') }}" },
-                    { src: "{{ asset('images/fondos/2.jpg', 'theme-RedIRIS') }}" },
-                    { src: "{{ asset('images/fondos/3.jpg', 'theme-RedIRIS') }}" },
-                    { src: "{{ asset('images/fondos/4.jpg', 'theme-RedIRIS') }}" },
-                    { src: "{{ asset('images/fondos/5.jpg', 'theme-RedIRIS') }}" },
-                    { src: "{{ asset('images/fondos/6.jpg', 'theme-RedIRIS') }}" },
-                    { src: "{{ asset('images/fondos/7.jpg', 'theme-RedIRIS') }}" },
-                    { src: "{{ asset('images/fondos/8.jpg', 'theme-RedIRIS') }}" },
-            
+{% for fondo in fondos %}
+                    { src: "{{ asset('images/fondos/'~ fondo ,'themeRedIRIS') }}" },
+{% endfor %}
+
                 ],
                 timer: false,
                 shuffle: true,
@@ -249,7 +243,7 @@
                 delay: 10000,
                 transitionDuration: 2000,
                 cover: true
-                //overlay: '{{ asset('vendor/vegas/overlays/05.png', 'theme-RedIRIS') }}'
+                //overlay: '{{ asset('vendor/vegas/overlays/05.png', 'themeRedIRIS') }}'
             });
         </script>
     </body>
