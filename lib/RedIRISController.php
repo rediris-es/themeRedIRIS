@@ -15,9 +15,7 @@ class RedIRISController implements \SimpleSAML\XHTML\TemplateControllerInterface
 
         require_once("/var/simplesamlphp/config_inst/config/configInstitucion.php");
         
-        #$data['cambiador'] = "https://sso-".NOMBRECORTO.".idpnube.rediris.es/recuperacion-credenciales";
         $data['cambiador'] = CAMBIADOR_PASS;
-
 
         $data['fondos'] = [];
         $directory = scandir("/var/simplesamlphp/config_inst/images/fondos");
