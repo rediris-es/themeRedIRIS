@@ -22,7 +22,7 @@ class RedIRISController implements \SimpleSAML\XHTML\TemplateControllerInterface
 
         foreach ($directory as $key => $value)
         {
-                if (!in_array($value,array(".","..")))
+                if (!in_array($value,array(".","..","base")))
                 {
                         array_push($data['fondos'], $value);
                 }
