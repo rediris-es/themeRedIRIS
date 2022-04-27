@@ -134,12 +134,15 @@
 
 								{%- endif %}
 -->
+								{% if cambiador is defined-%}
 
 								<div>
 									<a {{ 'href=' ~ cambiador }} class="txt1">
 										{{ 'He olvidado mi contraseña'|trans }}
 									</a>
 								</div>
+
+								{%- endif %}
 
 							</div>
 

@@ -15,7 +15,11 @@ class RedIRISController implements \SimpleSAML\XHTML\TemplateControllerInterface
 
         require_once("/var/simplesamlphp/config_inst/config/configInstitucion.php");
         
-        $data['cambiador'] = CAMBIADOR_PASS;
+
+	if (CAMBIADOR_PASS != ""){
+	   $data['cambiador'] = CAMBIADOR_PASS;
+	}
+
 
         $data['fondos'] = [];
         $directory = scandir("/var/simplesamlphp/config_inst/images/fondos");
