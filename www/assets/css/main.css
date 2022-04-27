@@ -686,3 +686,10 @@ div#currentTokens {
 
   max-width: 220px;
 }
+
+.pure-img {
+  width: auto;
+  max-height: 80px;
+  display: block;
+}
+
