@@ -1,6 +1,11 @@
 {% set pagetitle = 'Enter your username and password'|trans %}
 
+<!DOCTYPE html>
+<html lang="es">
+
 {% block preload %}
+    <head>
+        <title>{{ pagetitle }}</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" type="image/png" href="{{ asset('images/icons/favicon.ico', 'themeRedIRIS') }}"/>
@@ -17,23 +22,13 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('vendor/vegas/vegas.min.css', 'themeRedIRIS') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/util.css', 'themeRedIRIS') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css', 'themeRedIRIS') }}">
+	</head>
 {% endblock %}
 
-{% block postload %}
-        <script src="{{ asset('vendor/jquery/jquery-3.6.0.js', 'themeRedIRIS') }}"></script>
-        <script src="{{ asset('vendor/animsition/js/animsition.min.js', 'themeRedIRIS') }}"></script>
-        <script src="{{ asset('vendor/bootstrap/js/popper.js', 'themeRedIRIS') }}"></script>
-        <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('vendor/select2/select2.min.js', 'themeRedIRIS') }}"></script>
-        <script src="{{ asset('vendor/daterangepicker/moment.min.js', 'themeRedIRIS') }}"></script>
-        <script src="{{ asset('vendor/daterangepicker/daterangepicker.js', 'themeRedIRIS') }}"></script>
-        <script src="{{ asset('vendor/countdowntime/countdowntime.js', 'themeRedIRIS') }}"></script>
-        <script src="{{ asset('vendor/vegas/vegas.min.js', 'themeRedIRIS') }}"></script>
-        <script src="{{ asset('js/main.js', 'themeRedIRIS') }}"></script>
-	    <script src="{{ asset('js/loginuserpass.js', 'core') }}"></script>
-{% endblock %}
+
 
 {% block content %}
+    <body style="background-color: #666666;">
         <div class="limiter">
             <div class="container-login100">
                 <div class="wrap-login100 middle">
@@ -189,4 +184,36 @@
                 </div>
             </div>
         </div>
+
+		{% block postload %}
+			<script src="{{ asset('vendor/jquery/jquery-3.6.0.js', 'themeRedIRIS') }}"></script>
+			<script src="{{ asset('vendor/animsition/js/animsition.min.js', 'themeRedIRIS') }}"></script>
+			<script src="{{ asset('vendor/bootstrap/js/popper.js', 'themeRedIRIS') }}"></script>
+			<script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+			<script src="{{ asset('vendor/select2/select2.min.js', 'themeRedIRIS') }}"></script>
+			<script src="{{ asset('vendor/daterangepicker/moment.min.js', 'themeRedIRIS') }}"></script>
+			<script src="{{ asset('vendor/daterangepicker/daterangepicker.js', 'themeRedIRIS') }}"></script>
+			<script src="{{ asset('vendor/countdowntime/countdowntime.js', 'themeRedIRIS') }}"></script>
+			<script src="{{ asset('vendor/vegas/vegas.min.js', 'themeRedIRIS') }}"></script>
+			<script src="{{ asset('js/main.js', 'themeRedIRIS') }}"></script>
+			<script src="{{ asset('js/loginuserpass.js', 'core') }}"></script>
+			<script>
+				$("#slider").vegas({
+					slides: [
+						{% for fondo in fondos %}
+							{ src: "{{ asset('images/fondos/'~ fondo ,'themeRedIRIS') }}" },
+						{% endfor %}
+					],
+					timer: false,
+					shuffle: true,
+					transition: 'blur',
+					delay: 10000,
+					transitionDuration: 2000,
+					cover: true
+					//overlay: '{{ asset('vendor/vegas/overlays/05.png', 'themeRedIRIS') }}'
+				});
+        	</script>
+		{% endblock %}
+	</body>
 {% endblock %}
+</html>

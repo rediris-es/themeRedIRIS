@@ -8,19 +8,17 @@ use SimpleSAML\Logger;
 
 class RedIRISController implements TemplateControllerInterface
 {
-
-    //public function setUpTwig(Environment &$twig){
     public function setUpTwig(Environment &$twig): void{
     }
 
     public function display(array &$data): void
     {
-        define("CAMBIADOR_PASS", "https://micambiador.es");
+        $passw_changer = getenv('PASSW_CHANGER', true) ?: "";
 
         $data['extra_info'] = 'Extra information to use in your template';
         
         if (CAMBIADOR_PASS != ""){
-                $data['cambiador'] = CAMBIADOR_PASS;
+                $data['cambiador'] = $passw_changer;
         }
 
         $data['fondos'] = [];
