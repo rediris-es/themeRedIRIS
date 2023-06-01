@@ -17,7 +17,7 @@ class RedIRISController implements TemplateControllerInterface
 
         $data['extra_info'] = 'Extra information to use in your template';
         
-        if (CAMBIADOR_PASS != ""){
+        if ($passw_changer != ""){
                 $data['cambiador'] = $passw_changer;
         }
 
