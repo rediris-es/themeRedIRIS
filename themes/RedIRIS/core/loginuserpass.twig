@@ -1,127 +1,192 @@
 {% set pagetitle = 'Enter your username and password'|trans %}
 
-{% extends "@core/base.twig" %}
+{% block preload %}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/png" href="{{ asset('images/icons/favicon.ico', 'themeRedIRIS') }}"/>
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css', 'themeRedIRIS') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/bootstrap-icons/bootstrap-icons.css', 'themeRedIRIS') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css', 'themeRedIRIS') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('fonts/Linearicons-Free-v1.0.0/icon-font.min.css', 'themeRedIRIS') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/animate/animate.compat.css', 'themeRedIRIS') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/css-hamburgers/hamburgers.min.css', 'themeRedIRIS') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/animsition/css/animsition.min.css', 'themeRedIRIS') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/select2/select2.min.css', 'themeRedIRIS') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/daterangepicker/daterangepicker.css', 'themeRedIRIS') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/vegas/vegas.css', 'themeRedIRIS') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/vegas/vegas.min.css', 'themeRedIRIS') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/util.css', 'themeRedIRIS') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css', 'themeRedIRIS') }}">
+{% endblock %}
 
 {% block postload %}
-    <script src="{{ asset('js/loginuserpass.js', 'core') }}"></script>
+        <script src="{{ asset('vendor/jquery/jquery-3.6.0.js', 'themeRedIRIS') }}"></script>
+        <script src="{{ asset('vendor/animsition/js/animsition.min.js', 'themeRedIRIS') }}"></script>
+        <script src="{{ asset('vendor/bootstrap/js/popper.js', 'themeRedIRIS') }}"></script>
+        <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('vendor/select2/select2.min.js', 'themeRedIRIS') }}"></script>
+        <script src="{{ asset('vendor/daterangepicker/moment.min.js', 'themeRedIRIS') }}"></script>
+        <script src="{{ asset('vendor/daterangepicker/daterangepicker.js', 'themeRedIRIS') }}"></script>
+        <script src="{{ asset('vendor/countdowntime/countdowntime.js', 'themeRedIRIS') }}"></script>
+        <script src="{{ asset('vendor/vegas/vegas.min.js', 'themeRedIRIS') }}"></script>
+        <script src="{{ asset('js/main.js', 'themeRedIRIS') }}"></script>
+	    <script src="{{ asset('js/loginuserpass.js', 'core') }}"></script>
 {% endblock %}
 
 {% block content %}
-    {%- if not isProduction %}
+        <div class="limiter">
+            <div class="container-login100">
+                <div class="wrap-login100 middle">
+                    <div class="login100-form validate-form" >
 
-    <div class="message-box warning">
-      {% trans %}You are now accessing a pre-production system. This authentication setup is for testing and pre-production verification only. If someone sent you a link that pointed you here, and you are not <i>a tester</i> you probably got the wrong link, and should <b>not be here</b>.{% endtrans %}
-    </div>
-    {% endif -%}
-    {% if errorcode -%}
-    <div class="pure-g">
-        <div class="pure-u-1">
-            <div class="message-box error">
+					<div class="loginSide">
 
-                {% set errtitles = errorcodes['title'] %}
-                {% set errtitle = errtitles[errorcode] %}
+                        <div class="login100-form-title p-b-43"> 
+                            <img src="{{ asset('images/logo/'~ logo, 'themeRedIRIS') }}" width="200" />
+                        </div>
 
-                <h3>{{ errtitle|trans(errorparams) }}</h3>
+                        <div class="text-justify p-b-20">
+                            <span class="txt2">
+                                {%- if not isProduction %}
 
-                {% set errdescs = errorcodes['descr'] %}
-                {% set errdesc = errdescs[errorcode] %}
+                                <div class="message-box warning">
+                                    {% trans %}You are now accessing a pre-production system. This authentication setup is for testing and pre-production verification only. If someone sent you a link that pointed you here, and you are not <i>a tester</i> you probably got the wrong link, and should <b>not be here</b>.{% endtrans %}
+                                </div>
 
-                <p>{{ errdesc|trans(errorparams) }}</p>
+                                {% endif -%}
+                                {% if errorcode -%}
 
+                                <div class="pure-g">
+                                    <div class="pure-u-1">
+                                        <div class="message-box error">
+                                            
+                                            {% set errtitles = errorcodes['title'] %}
+                                            {% set errtitle = errtitles[errorcode] %}
+
+                                            <h3>{{ errtitle|trans(errorparams) }}</h3>
+
+                                            {% set errdescs = errorcodes['descr'] %}
+                                            {% set errdesc = errdescs[errorcode] %}
+
+                                            <p>{{ errdesc|trans(errorparams) }}</p>
+                                                                    
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {%- endif %}
+                            </span>
+                        </div>
+
+                
+						<form class="pure-form pure-form-aligned center-form" action="{{ moduleURL('core/loginuserpass', {'AuthState': AuthState}) }}" method="post" name="f">
+
+							<div class="wrap-input100 {{ forceUsername ? '' : 'validate-input'}} " data-validate = "User is required">
+
+								<input id="username" class="input100" {{ forceUsername ? 'disabled' }} placeholder="Nombre usuario" type="text" name="username"
+									   {%- if not forceUsername %} tabindex="1" value="{{ username }}" autocomplete="username" {% endif %}
+									   {%- if not forceUsername and not username %} autofocus {% endif %} >
+								<span class="focus-input100"></span>
+								<span class="label-input100"></span>
+
+							</div>
+
+
+							<div class="wrap-input100 validate-input" data-validate="Password is required">
+								<input id="password" type="password" tabindex="2" name="password" class="input100" autocomplete="current-password" placeholder="Contraseña"
+								{%- if forceUsername or username %} autofocus {% endif %} >
+								<span class="focus-input100"></span>
+								<span class="label-input100"></span>
+							</div>
+
+
+							<div class="flex-sb-m flex-row-reverse w-full p-t-3 p-b-32">
+
+                                <!--
+								{% if rememberMeEnabled -%}
+
+								<div class="contact100-form-checkbox">
+									<input id="remember_me" type="checkbox" tabindex="5" class="input-checkbox100"
+											{{ rememberMeChecked ? 'checked="checked"' }} name="remember_me" value="Yes">
+										<label class="label-checkbox100" for="remember_me">
+											{{ 'Remember me'|trans }}
+										</label>
+									</label>
+								</div>
+
+								{%- endif %}
+                                -->
+
+								{% if cambiador is defined-%}
+
+								<div>
+									<a {{ 'href=' ~ cambiador }} class="txt1">
+										{{ 'He olvidado mi contraseña'|trans }}
+									</a>
+								</div>
+
+								{%- endif %}
+
+							</div>
+
+							{% if organizations is defined -%}
+							<div class="pure-control-group">
+								<label class="txt1" for="organization">{{ 'Organization'|trans }}:</label>
+								<div class="pure-select right pure-input-1-2 pure-input-sm-1-1 selectOrganization p-t-10">
+									{%- for id, orgDesc in organizations -%}
+											{% if id == selectedOrg -%}
+												{%- set selected = 'selected="selected"' %}
+											{%- else -%}
+												{% set selected = '' -%}
+											{% endif -%}
+											{% if orgDesc -%}
+												<label class="radioOrg txt1">
+													<input type="radio" name="organization" id="organization" value="{{ id }}" {{ selected }}>
+														{{ orgDesc|trans }}
+												</label>
+											{% endif -%}
+									{% endfor %}
+								</div>
+
+
+								{% if rememberOrganizationEnabled is defined -%}
+								<br>
+								<div class="contact100-form-checkbox">
+									<input type="checkbox" id="remember_organization" tabindex="5" class="input-checkbox100" name="remember_organization" value="Yes"
+											{{ rememberOrganizationChecked ? 'checked="checked"' }} >
+										<label class="label-checkbox100" for="remember_organization">
+											{{ 'Remember my organization'|trans }}
+										</label>
+									</label>
+								</div>
+								{%- endif %}
+							</div> <!--pure-control-group-->
+							{%- endif %}
+
+							<br>
+
+							<div class="container-login100-form-btn">
+								<button class="login100-form-btn">
+									{% trans %}Login{% endtrans %}
+								</button>
+							</div>
+
+							<div class="text-center p-t-46 p-b-8">
+								<span class="txt2">
+								</span>
+							</div>
+                            
+							<div class="login100-form-social flex-c-m">
+                                <img src="{{ asset('images/logo/logo-feds.svg', 'themeRedIRIS') }}" width="300" />
+                            </div>
+
+						</form>
+					</div>
+                    </div>
+
+                    <div class="login100-more" id="slider">
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    {%- endif %}
-
-    <h1>{{ 'Enter your username and password'|trans }}</h1>
-
-    <p>{{ 'A service has requested you to authenticate yourself. Please enter your username and password in the form below.'|trans }}</p>
-    <div class="center-form login-form-start">
-        <form id="f" class="pure-form pure-form-aligned" action="{{ moduleURL('core/loginuserpass', {'AuthState': AuthState}) }}"
-            method="post" name="f" spellcheck="false">
-                <div class="pure-control-group">
-                    <label for="username">{{ 'Username'|trans }}</label>
-                    <input id="username" {{ forceUsername ? 'disabled' }} placeholder="{{ username }}" type="text" name="username" class="edge"
-            {%- if not forceUsername %} tabindex="1" value="{{ username }}" autocomplete="username" {% endif %}
-            {%- if not forceUsername and not username %} autofocus {% endif %} >
-                {% if rememberUsernameEnabled and not forceUsername -%}
-                </div>
-                <div class="pure-controls">
-                    <label for="remember_username" class="pure-checkbox">
-                        <input id="remember_username" type="checkbox" tabindex="4"
-                                {{ rememberUsernameChecked ? 'checked' }} name="remember_username" value="Yes">
-                        <small>{{ 'Remember my username'|trans }}</small>
-                    </label>
-                {%- endif %}
-                </div>
-
-                <div class="pure-control-group">
-                    <label for="password">{{ 'Password'|trans}}</label>
-                    <input id="password" type="password" tabindex="2" name="password" class="edge" autocomplete="current-password"
-                    {%- if forceUsername or username %} autofocus {% endif %} >
-                </div>
-
-                {% if rememberMeEnabled -%}
-                <div class="pure-controls">
-                    <label for="remember_me" class="pure-checkbox">
-                    <input id="remember_me" type="checkbox" tabindex="5"
-                            {{ rememberMeChecked ? 'checked="checked"' }} name="remember_me" value="Yes">
-                        <small>{{ 'Remember me'|trans }}</small>
-                    </label>
-                </div>
-                {%- endif %}
-
-                {% if organizations is defined -%}
-                <div class="pure-control-group">
-                    <label for="organization">{{ 'Organization'|trans }}</label>
-                    <div class="pure-select right pure-input-1-2 pure-input-sm-1-1">
-                        <select name="organization" id="organization" tabindex="3">
-                            {{ selectedOrg ?: null }}
-                            {%- for id, orgDesc in organizations -%}
-                                {% if id == selectedOrg -%}
-                                    {%- set selected = 'selected="selected"' %}
-                                {%- else -%}
-                                    {% set selected = '' -%}
-                                {% endif -%}
-                                {% if orgDesc -%}
-                                    <option value="{{ id }}" {{ selected }}>{{ orgDesc|trans }}</option>
-                                {% endif -%}
-                            {% endfor %}
-                        </select>
-                    </div>
-                    {% if rememberOrganizationEnabled is defined -%}
-                    <div class="pure-controls">
-                        <label for="remember_organization" class="pure-checkbox">
-                            <input type="checkbox" id="remember_organization" tabindex="5" name="remember_organization"
-                                value="Yes" {{ rememberOrganizationChecked ? 'checked="checked"' }} >
-                            <small>{{ 'Remember my organization'|trans }}</small>
-                        </label>
-                    </div>
-                    {%- endif %}
-                </div> <!--pure-control-group-->
-            {%- endif %}
-
-            <div class="pure-control-group center login-form-submit">
-                <button class="pure-button pure-button-red pure-input-1-2 pure-input-sm-1-1 right" id="submit_button"
-                        type="submit" tabindex="6" data-default="{% trans %}Login{% endtrans %}"
-                        data-processing="{% trans %}Processing...{% endtrans %}">
-                {% trans %}Login{% endtrans %}
-                </button>
-            </div>
-        </form>
-    </div>
-    {% if loginpage_links is defined -%}
-    <ul>
-        {% for link in loginpage_links -%}
-        <li><a href="{{ link.href }}">{{ link['text']|trans }}</a></li>
-        {% endfor %}
-    </ul>
-    {%- endif %}
-
-    <br><br>
-    <div class="pure-form-message">
-        <strong>{{ 'Help! I don\'t remember my password.'|trans }}</strong>
-        <p>{{ 'Without your username and password you cannot authenticate yourself for access to the service. There may be someone that can help you. Consult the help desk at your organization!'|trans }}</p>
-    </div>
-
 {% endblock %}

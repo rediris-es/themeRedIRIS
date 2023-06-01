@@ -15,19 +15,13 @@ class RedIRISController implements TemplateControllerInterface
 
     public function display(array &$data): void
     {
+        define("CAMBIADOR_PASS", "https://micambiador.es");
+
         $data['extra_info'] = 'Extra information to use in your template';
-    }
-
-    /*
-    public function display(&$data){
-
-        require_once("/var/simplesamlphp/config_inst/config/configInstitucion.php");
         
-
-	if (CAMBIADOR_PASS != ""){
-	   $data['cambiador'] = CAMBIADOR_PASS;
-	}
-
+        if (CAMBIADOR_PASS != ""){
+                $data['cambiador'] = CAMBIADOR_PASS;
+        }
 
         $data['fondos'] = [];
         $directory = scandir("/var/simplesamlphp/config_inst/images/fondos");
@@ -53,8 +47,8 @@ class RedIRISController implements TemplateControllerInterface
         syslog(LOG_LOCAL1|LOG_INFO, "**RedIRIS theme");
         Logger::debug('**RedIRIS theme');
         error_log("**RedIRIS theme");
+
     }
-    */
-    
-    
+
+   
 }
