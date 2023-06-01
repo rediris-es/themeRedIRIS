@@ -3,14 +3,22 @@
 namespace  SimpleSAML\Module\themeRedIRIS;
 
 use Twig\Environment;
+use SimpleSAML\XHTML\TemplateControllerInterface;
 use SimpleSAML\Logger;
 
-class RedIRISController implements \SimpleSAML\XHTML\TemplateControllerInterface {
+class RedIRISController implements TemplateControllerInterface
+{
 
     //public function setUpTwig(Environment &$twig){
-    public function setUpTwig(\Twig_Environment &$twig){
+    public function setUpTwig(Environment &$twig): void{
     }
 
+    public function display(array &$data): void
+    {
+        $data['extra_info'] = 'Extra information to use in your template';
+    }
+
+    /*
     public function display(&$data){
 
         require_once("/var/simplesamlphp/config_inst/config/configInstitucion.php");
@@ -41,9 +49,12 @@ class RedIRISController implements \SimpleSAML\XHTML\TemplateControllerInterface
                         $data['logo'] = $value;
                 }
         }
-
+   
         syslog(LOG_LOCAL1|LOG_INFO, "**RedIRIS theme");
         Logger::debug('**RedIRIS theme');
         error_log("**RedIRIS theme");
     }
+    */
+    
+    
 }

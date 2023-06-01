@@ -1,0 +1,11 @@
+<div id="footer">
+  <div class="wrap">
+    <div class="center copyrights">&copy; · {{ year }} · <a href="https://www.rediris.es/idpnube/">IdPnube a medida RedIRIS</a>
+    </div>
+    <div class="logo-footer-right show-for-large">
+      <div class="logo-footer">
+        <img class="pure-img" src="{{ asset('images/logo/'~ logo, 'themeRedIRIS') }}" alt="Logo institucional" />
+      </div>
+    </div>
+  </div>
+</div>
