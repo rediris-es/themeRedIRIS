@@ -22,13 +22,15 @@ class RedIRISController implements TemplateControllerInterface
         if ($passw_changer_type == "local" && $passw_changer_local != ""){
                 $data['cambiador'] = $passw_changer_local;
         }
-        elseif($passw_changer_type == "remote" && $passw_changer_remote != ""){
-                $data['cambiador'] = $passw_changer_remote;
+        elseif($passw_changer_type == "remote" && $passw_changer_remoto != ""){
+                $data['cambiador'] = $passw_changer_remoto;
         }
 
         $data['fondos'] = [];
-        $directory = scandir("/var/simplesamlphp/config_inst/images/fondos");
 
+       //$directory = scandir("/var/simplesamlphp/config_inst/images/fondos");
+        $directory = scandir("/var/simplesamlphp/modules/themeRedIRIS/public/assets/images/fondos");
+        
         foreach ($directory as $key => $value)
         {
                 if (!in_array($value,array(".","..","base")))
@@ -37,7 +39,8 @@ class RedIRISController implements TemplateControllerInterface
                 }
         }
 
-        $directory = scandir("/var/simplesamlphp/config_inst/images/logo");
+        #$directory = scandir("/var/simplesamlphp/config_inst/images/log");
+        $directory = scandir("/var/simplesamlphp/modules/themeRedIRIS/public/assets/images/logo");
 
         foreach ($directory as $key => $value)
         {
@@ -47,9 +50,7 @@ class RedIRISController implements TemplateControllerInterface
                 }
         }
    
-        syslog(LOG_LOCAL1|LOG_INFO, "**RedIRIS theme");
-        Logger::debug('**RedIRIS theme');
-        error_log("**RedIRIS theme");
+        syslog(LOG_LOCAL1|LOG_INFO, "**RedIRIS theme**");
 
     }
 
