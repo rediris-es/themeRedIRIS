@@ -6,6 +6,10 @@ body,html {
   height: 100%;
   width: 100%;
 }
+.img-card {
+  max-width: 200px;
+  height: auto;
+}
 .overflow-hidden {
   overflow: hidden;
 }
