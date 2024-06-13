@@ -17,7 +17,7 @@ function changeImage() {
       if (existingImage.classList.contains('slide-out')) {
         imageContainer.removeChild(existingImage);
       }
-    }, 1000);
+    }, 3000);
   }
 
   // Crea una nueva imagen y aplícale la animación de entrada
