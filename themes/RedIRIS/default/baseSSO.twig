@@ -28,7 +28,7 @@
 
       </div>            
       
-      <div id="imageData" data-images="{% for fondo in fondos %}{{ asset('images/fondos/'~ fondo ,'themeRedIRIS') }}{% endfor %}"></div>
+      <div id="imageData" data-images="{% for fondo in fondos %}{{ asset('images/fondos/'~ fondo ,'themeRedIRIS') }},{% endfor %}"></div>
 
       <script src="{{ asset('js/RedIRIS_slider.js', 'themeRedIRIS') }}"></script>
 
