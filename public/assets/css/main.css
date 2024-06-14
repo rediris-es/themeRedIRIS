@@ -35,6 +35,7 @@ body,html {
   color: black;
 }
 
+/*
 @keyframes slideOut {
     0% {
         opacity: 1;
@@ -45,11 +46,12 @@ body,html {
         transform: scale(0.4);
     }
 }
+*/
 
 @keyframes slideIn {
     0% {
         opacity: 0;
-        transform: scale(0.4);
+        transform: scale(1);
     }
     100% {
         opacity: 1;
@@ -57,12 +59,13 @@ body,html {
     }
 }
 
-
+/*
 .image-container img.slide-out {
   animation: slideOutLeft 2s ease-out forwards;
 }
+*/
 
 .image-container img.slide-in {
-  animation: slideIn 2s ease-out forwards;
+  animation: slideIn 3s ease-out forwards;
 
 }
