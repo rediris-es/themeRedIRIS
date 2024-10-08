@@ -99,34 +99,43 @@
 								{% if organizations is defined -%}
 								<div class="pure-control-group">
 									<label class="txt1" for="organization">{{ 'Organization'|trans }}:</label>
-									<div class="pure-select right pure-input-1-2 pure-input-sm-1-1 selectOrganization p-t-10">
-										{%- for id, orgDesc in organizations -%}
-												{% if id == selectedOrg -%}
-													{%- set selected = 'selected="selected"' %}
-												{%- else -%}
-													{% set selected = '' -%}
-												{% endif -%}
-												{% if orgDesc -%}
-													<label class="radioOrg txt1">
-														<input type="radio" name="organization" id="organization" value="{{ id }}" {{ selected }}>
-															{{ orgDesc|trans }}
-													</label>
-												{% endif -%}
+									<div class="radio-container">
+										{% set selectedOrgDefined = selectedOrg is defined and selectedOrg is not empty %}
+										{% for id, orgDesc in organizations %}
+											{% if not selectedOrgDefined and loop.first %}
+												{% set selected = 'checked="checked"' %}
+											{% elseif selectedOrgDefined and id == selectedOrg %}
+												{% set selected = 'checked="checked"' %}
+											{% else %}
+												{% set selected = '' %}
+											{% endif %}
+											{% if orgDesc %}
+												<label class="radioOrg txt1">
+													<input type="radio" name="organization" value="{{ id }}" {{ selected }}>
+													{{ orgDesc|trans }}
+												</label>
+											{% endif %}
 										{% endfor %}
 									</div>
+								</div>
 
 
-									{% if rememberOrganizationEnabled is defined -%}
-									<br>
-									<div class="contact100-form-checkbox">
-										<input type="checkbox" id="remember_organization" tabindex="5" class="input-checkbox100" name="remember_organization" value="Yes"
-												{{ rememberOrganizationChecked ? 'checked="checked"' }} >
-											<label class="label-checkbox100" for="remember_organization">
-												{{ 'Remember my organization'|trans }}
-											</label>
+								{#
+								
+								{% if rememberOrganizationEnabled is defined -%}
+								<br>
+								<div class="contact100-form-checkbox">
+									<input type="checkbox" id="remember_organization" tabindex="5" class="input-checkbox100" name="remember_organization" value="Yes"
+											{{ rememberOrganizationChecked ? 'checked="checked"' }} >
+										<label class="label-checkbox100" for="remember_organization">
+											{{ 'Remember my organization'|trans }}
 										</label>
-									</div>
-									{%- endif %}
+										</label>
+								</div>
+								{%- endif %}
+								
+								#}
+
 								</div> <!--pure-control-group-->
 								{%- endif %}
 

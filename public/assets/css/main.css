@@ -38,6 +38,52 @@
   display: block;
 }
 
+.radio-container {
+  display: flex;
+  flex-wrap: wrap; /* Para que sea responsive */
+  gap: 20px; /* Espacio más amplio entre los radio buttons */
+  justify-content: center; /* Centra los botones */
+  width: 100%;
+  padding-top: 10px;
+}
+
+.radioOrg {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1.1rem; /* Letra más grande */
+  font-weight: bold; /* Hacer el texto más destacado */
+  color: #333; /* Color del texto más oscuro */
+}
+
+.radioOrg input[type="radio"] {
+  margin-right: 10px; /* Espacio entre el botón de radio y el texto */
+  transform: scale(1.2); /* Hacer el radio button más grande */
+  accent-color: #c53e50; /* Cambiar el color del radio button */
+}
+
+.radioOrg input[type="radio"]:checked {
+  border-color: #c53e50; /* Bordes verdes cuando están seleccionados */
+}
+
+@media (max-width: 768px) {
+  .radio-container {
+      gap: 10px; /* Espacio más pequeño en pantallas medianas */
+  }
+}
+
+@media (max-width: 480px) {
+  .radio-container {
+      flex-direction: column; /* En pantallas pequeñas, los botones estarán en una columna */
+      align-items: center;
+  }
+
+  .radioOrg {
+      font-size: 1rem; /* Tamaño de letra más pequeño en pantallas pequeñas */
+  }
+}
+
+
 @keyframes slideIn {
     0% {
         opacity: 0;
