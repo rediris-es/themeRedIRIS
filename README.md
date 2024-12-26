@@ -1,6 +1,6 @@
 ## Instalación del módulo de la skin de RedIRIS para simpleSAMLphp
 
-Este módulo se recomienda instalar para versiones de simpleSAMLphp 2.3.4 o superiores.
+Este módulo se recomienda instalar para versiones de simpleSAMLphp 2.2.0 o superiores.
 
 1. Crear un directorio llamado **themeRedIRIS** dentro de la carpeta de **modules** de simpleSAMLphp y copiar todo este espacio de GitHub.
 2. Editar el fichero **config.php** para añadir dos cosas:
