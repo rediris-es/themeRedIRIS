@@ -49,8 +49,9 @@ class RedIRISController implements TemplateControllerInterface
                         $data['logo'] = $value;
                 }
         }
-   
-        syslog(LOG_LOCAL1|LOG_INFO, "**RedIRIS theme**");
+
+        // Se comenta esta linea pero se puede usar para depurar
+        // syslog(LOG_LOCAL1|LOG_INFO, "**RedIRIS theme**");
 
     }
 
