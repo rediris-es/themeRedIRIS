@@ -17,3 +17,5 @@ Este módulo se recomienda instalar para versiones de simpleSAMLphp 2.2.0 o supe
       'usenewui' => true,
      ~~~
 3. Dentro de la ruta **public/assets** del módulo, hay que crear un direcorio que se llame **images** y, a su vez, dentro de este, crearemos otros dos directorios llamados: **fondos** y **logo**. Dentro del directorio de **fondos** copiaremos todas las imágenes que queramos que aparezcan de fondo en el **Single Sign On** y dentro del directorio de **logo** copiaremos el logo institucional para que aparezca en el la zona del **login**.
+
+4. Como comprobación adicional, hay que mirar dentro del fichero RedIRISController.php, que las rutas a los logos y a las images es correcta en cada caso (linea 32 y 43 del fichero).
