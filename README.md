@@ -20,8 +20,19 @@ Este módulo se recomienda instalar para versiones de simpleSAMLphp 2.2.0 o supe
 
 4. Como comprobación adicional, hay que mirar dentro del fichero RedIRISController.php, que las rutas a los logos y a las images es correcta en cada caso (linea 32 y 43 del fichero).
 
-NOTA: Si obténeis un error de "Security Policies" es por algún fichero que se está llamando remotamente y simpleSAMLphp lo bloquea. Para ello, todos los ficheros deberán estar locales en la máquina. 
+NOTA: Si obténeis un error de "Security Policies" es por algún fichero que se está llamando remotamente y simpleSAMLphp lo bloquea. 
 
 Os adjunto una foto del tipo del error:
 
 ![Captura de pantalla 2025-01-30 a las 11 49 19](https://github.com/user-attachments/assets/3e4e0fe2-19c9-4cec-a133-4ebd9378cf56)
+
+Si esto sucede, hay que ir al fichero del config.php y añadir lo siguiente en la parte de "headers.security":
+
+~~~
+'headers.security' => [
+        'Content-Security-Policy' => " object-src 'none'; font-src http: data:; connect-src 'self'; img-src 'self' data: picsum.photos fastly.picsum.photos; base-uri 'none'",
+        'X-Frame-Options' => 'SAMEORIGIN',
+        'X-Content-Type-Options' => 'nosniff',
+        'Referrer-Policy' => 'origin-when-cross-origin',
+    ],
+~~~
