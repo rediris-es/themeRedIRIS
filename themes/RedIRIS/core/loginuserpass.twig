@@ -125,37 +125,47 @@
   </div>
 
   <style>
-    .image-container {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: 0;
-      background-position: center center;
-      background-size: cover;
-      background-repeat: no-repeat;
-    }
-    .card-body {
-      background: rgba(255,255,255,0.96);
-      border-radius: 1rem;
-      box-shadow: 0 8px 32px 0 #22306626, 0 1.5px 10px #0d6efd20;
-    }
-    .login-card-wrapper {
-      max-width: 500px;
-      margin-right: 3vw;
-    }
-    @media (max-width: 991.98px) {
+      .image-container {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 0;
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+
+      .card {
+        background: transparent !important; /* Quita fondo opaco del card */
+        border: none !important;            /* Quita el borde de bootstrap card */
+        box-shadow: none !important;        /* Quita sombra de bootstrap card */
+      }
+
+      .card-body {
+        background: rgba(255,255,255,0.92); /* Fondo translúcido */
+        border-radius: 1rem;
+        border: 1px solid #e0e4ec;          /* Borde claro y limpio */
+        box-shadow: 0 4px 20px 0 #22306626; /* Sombra suave */
+        padding: 2rem 1.5rem;
+      }
+
       .login-card-wrapper {
-        margin: 0 auto !important;
-        max-width: 100% !important;
+        max-width: 500px;
+        margin-right: 3vw;
       }
-      .row.justify-content-end {
-        justify-content: center !important;
+      @media (max-width: 991.98px) {
+        .login-card-wrapper {
+          margin: 0 auto !important;
+          max-width: 100% !important;
+        }
+        .row.justify-content-end {
+          justify-content: center !important;
+        }
       }
-    }
-    body {
-      overflow-x: hidden;
-    }
+      body {
+        overflow-x: hidden;
+      }
   </style>
 
 {% endblock %}
