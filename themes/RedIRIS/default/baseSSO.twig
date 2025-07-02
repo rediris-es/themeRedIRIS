@@ -20,19 +20,19 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css', 'themeRedIRIS') }}">
   </head>
 
+
   <body id="{{ templateId }}">
-    
+    <div id="bg-fondo"></div>
       <div class="row m-0 p-0">
+        {% block content %}{% endblock %}
+      </div>
 
-          {% block content %}{% endblock %}
-
-      </div>            
-      
-      <div id="imageData" data-images="{% for fondo in fondos %}{{ asset('images/fondos/'~ fondo ,'themeRedIRIS') }},{% endfor %}"></div>
-
-      <script src="{{ asset('js/RedIRIS_slider.js', 'themeRedIRIS') }}"></script>
-
-      {% block postload %}{% endblock %}
+    <div id="imageData" data-images="{% for fondo in fondos %}{{ asset('images/fondos/'~ fondo ,'themeRedIRIS') }},{% endfor %}"></div>
+    
+    <script src="{{ asset('js/RedIRIS_slider.js', 'themeRedIRIS') }}"></script>
+    
+    {% block postload %}{% endblock %}
   </body>
+
 </html>
 {% endapply %}

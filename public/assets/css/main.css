@@ -1,3 +1,14 @@
+#bg-fondo {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: background-image 0.5s;
+}
 .img-cover {
   object-fit: cover;
   height: 100%;

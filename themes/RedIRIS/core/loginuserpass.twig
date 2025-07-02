@@ -5,155 +5,157 @@
 {% block preload %}
 {% endblock %}
 
-
 {% block postload %}			
 {% endblock %}
 
-
 {% block content %}
 
-	<div id="imageContainer" class="col-md-6 col-xl-8 image-container"></div>
+  <!-- Fondo de imagen siempre detrás -->
+  <div id="imageContainer" class="image-container"></div>
 
-    <div class="col-md-6 col-xl-4 d-flex justify-content-center align-items-center vh-100">
-      <div class="card border border-light-subtle rounded-3 shadow-sm opacity-card-body mx-5">
-        <div class="card-body">
-		    <div class="text-justify p-b-20">
-				<span class="txt2">
-					{%- if not isProduction %}
-						<div class="message-box warning">
-							{% trans %}You are now accessing a pre-production system. This authentication setup is for testing and pre-production verification only. If someone sent you a link that pointed you here, and you are not <i>a tester</i> you probably got the wrong link, and should <b>not be here</b>.{% endtrans %}
-						</div>
-					{% endif -%}
-					{% if errorcode -%}
+  <div class="container-fluid p-0">
+    <div class="row align-items-center min-vh-100 m-0 justify-content-end">
+      <div class="col-12 col-sm-10 col-md-8 col-lg-5 px-0 login-card-wrapper">
+        <div class="card border border-light-subtle rounded-3 shadow-sm opacity-card-body">
+          <div class="card-body">
 
-						<div class="pure-g">
-							<div class="pure-u-1">
-								<div class="message-box error">
-												
-									{% set errtitles = errorcodes['title'] %}
-									{% set errtitle = errtitles[errorcode] %}
-
-									<h3>{{ errtitle|trans(errorparams) }}</h3>
-
-									{% set errdescs = errorcodes['descr'] %}
-									{% set errdesc = errdescs[errorcode] %}
-
-									<p>{{ errdesc|trans(errorparams) }}</p>
-																		
-								</div>
-							</div>
-						</div>
-
-					{%- endif %}
-				</span>
-			</div>
-			
-          <div class="text-center pb-5 pt-4">
-            <img src="{{ asset('images/logo/'~ logo, 'themeRedIRIS') }}" alt="SSO Logo" class="img-fluid img-card w-100">
-          </div>
-
-          <form id="f" class="pure-form pure-form-aligned" action="{{ formURL }}" method="post" name="f" spellcheck="false">
-            <div class="row gy-2 overflow-hidden">
-              <div class="col-12">
-                <div class="form-floating mb-3 {{ forceUsername ? '' : 'validate-input'}}" data-validate = "User is required">
-
-                  <input id="username" class="form-control" {{ forceUsername ? 'disabled' }} placeholder="Nombre de usuario" type="text" name="username"  
-				  	{%- if not forceUsername %} tabindex="1" value="{{ username }}" autocomplete="username" {% endif %}
-					{%- if not forceUsername and not username %} autofocus {% endif %} required >
-                  <label for="email" class="label-text">Nombre usuario</label>
-
-                </div>
-              </div>
-		
-              <div class="col-12">
-                <div class="form-floating mb-3 validate-input" data-validate="Password is required">
-                  <input id="password" type="password" tabindex="2" name="password" class="form-control" autocomplete="current-password" placeholder="Contraseña" 
-				  {%- if forceUsername or username %} autofocus {% endif %} required >
-                  <label for="password" class="label-text">Contraseña</label>
-                </div>
-              </div>
-              <div class="col-12">
-                <div class="d-flex gap-2 justify-content-between">
-                  <div class="form-check">
-				  		<!--
-						{% if rememberMeEnabled -%}
-                    		<input class="form-check-input" {{ rememberMeChecked ? 'checked="checked"' }} type="checkbox" tabindex="5" value="yes" name="remember_me" id="rememberMe">
-                    		<label class="form-check-label label-text" for="rememberMe">
-                    	 		{{ 'Remember me'|trans }}
-                    		</label>
-						{%- endif %}-->
+            <div class="text-justify p-b-20">
+              <span class="txt2">
+                {%- if not isProduction %}
+                  <div class="message-box warning">
+                    {% trans %}You are now accessing a pre-production system. This authentication setup is for testing and pre-production verification only. If someone sent you a link that pointed you here, and you are not <i>a tester</i> you probably got the wrong link, and should <b>not be here</b>.{% endtrans %}
                   </div>
-				   
-				   {% if cambiador is defined-%}
-
-					<div>
-						<a {{ 'href=' ~ cambiador }} class="label-text">{{ 'He olvidado mi contraseña'|trans }}</a>
-					</div>
-
-					{%- endif %}
-
-                </div>
-              </div>
-
-
-								{% if organizations is defined -%}
-								<div class="pure-control-group">
-									<label class="txt1" for="organization">{{ 'Organization'|trans }}:</label>
-									<div class="radio-container">
-										{% set selectedOrgDefined = selectedOrg is defined and selectedOrg is not empty %}
-										{% for id, orgDesc in organizations %}
-											{% if not selectedOrgDefined and loop.first %}
-												{% set selected = 'checked="checked"' %}
-											{% elseif selectedOrgDefined and id == selectedOrg %}
-												{% set selected = 'checked="checked"' %}
-											{% else %}
-												{% set selected = '' %}
-											{% endif %}
-											{% if orgDesc %}
-												<label class="radioOrg txt1">
-													<input type="radio" name="organization" value="{{ id }}" {{ selected }}>
-													{{ orgDesc|trans }}
-												</label>
-											{% endif %}
-										{% endfor %}
-									</div>
-								</div>
-
-
-								{#
-								
-								{% if rememberOrganizationEnabled is defined -%}
-								<br>
-								<div class="contact100-form-checkbox">
-									<input type="checkbox" id="remember_organization" tabindex="5" class="input-checkbox100" name="remember_organization" value="Yes"
-											{{ rememberOrganizationChecked ? 'checked="checked"' }} >
-										<label class="label-checkbox100" for="remember_organization">
-											{{ 'Remember my organization'|trans }}
-										</label>
-										</label>
-								</div>
-								{%- endif %}
-								
-								#}
-
-								</div> <!--pure-control-group-->
-								{%- endif %}
-
-								<br>
-
-              <div class="col-12">
-                <div class="d-grid my-3">
-                  <button class="btn btn-lg main-button" type="submit">{% trans %}Login{% endtrans %}</button>
-                </div>
-              </div>
-              <div class="text-center mb-3 p-4">
-                <img src="{{ asset('images/logo/logo-feds.svg', 'themeRedIRIS') }}" alt="Federation Logo" class="img-fluid img-card w-100">
-              </div>
+                {% endif -%}
+                {% if errorcode -%}
+                  <div class="pure-g">
+                    <div class="pure-u-1">
+                      <div class="message-box error">
+                        {% set errtitles = errorcodes['title'] %}
+                        {% set errtitle = errtitles[errorcode] %}
+                        <h3>{{ errtitle|trans(errorparams) }}</h3>
+                        {% set errdescs = errorcodes['descr'] %}
+                        {% set errdesc = errdescs[errorcode] %}
+                        <p>{{ errdesc|trans(errorparams) }}</p>
+                      </div>
+                    </div>
+                  </div>
+                {%- endif %}
+              </span>
             </div>
-          </form>
+            
+            <div class="text-center pb-5 pt-4">
+              <img src="{{ asset('images/logo/'~ logo, 'themeRedIRIS') }}" alt="SSO Logo" class="img-fluid img-card w-100">
+            </div>
+
+            <form id="f" class="pure-form pure-form-aligned" action="{{ formURL }}" method="post" name="f" spellcheck="false">
+              <div class="row gy-2 overflow-hidden">
+                <div class="col-12">
+                  <div class="form-floating mb-3 {{ forceUsername ? '' : 'validate-input'}}" data-validate = "User is required">
+                    <input id="username" class="form-control" {{ forceUsername ? 'disabled' }} placeholder="Nombre de usuario" type="text" name="username"  
+                    {%- if not forceUsername %} tabindex="1" value="{{ username }}" autocomplete="username" {% endif %}
+                    {%- if not forceUsername and not username %} autofocus {% endif %} required >
+                    <label for="email" class="label-text">Nombre usuario</label>
+                  </div>
+                </div>
+        
+                <div class="col-12">
+                  <div class="form-floating mb-3 validate-input" data-validate="Password is required">
+                    <input id="password" type="password" tabindex="2" name="password" class="form-control" autocomplete="current-password" placeholder="Contraseña" 
+                    {%- if forceUsername or username %} autofocus {% endif %} required >
+                    <label for="password" class="label-text">Contraseña</label>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="d-flex gap-2 justify-content-between">
+                    <div class="form-check">
+                      <!--
+                      {% if rememberMeEnabled -%}
+                        <input class="form-check-input" {{ rememberMeChecked ? 'checked="checked"' }} type="checkbox" tabindex="5" value="yes" name="remember_me" id="rememberMe">
+                        <label class="form-check-label label-text" for="rememberMe">
+                          {{ 'Remember me'|trans }}
+                        </label>
+                      {%- endif %}-->
+                    </div>
+                    {% if cambiador is defined-%}
+                    <div>
+                      <a {{ 'href=' ~ cambiador }} class="label-text">{{ 'He olvidado mi contraseña'|trans }}</a>
+                    </div>
+                    {%- endif %}
+                  </div>
+                </div>
+
+                {% if organizations is defined -%}
+                <div class="pure-control-group">
+                  <label class="txt1" for="organization">{{ 'Organization'|trans }}:</label>
+                  <div class="radio-container">
+                    {% set selectedOrgDefined = selectedOrg is defined and selectedOrg is not empty %}
+                    {% for id, orgDesc in organizations %}
+                      {% if not selectedOrgDefined and loop.first %}
+                        {% set selected = 'checked="checked"' %}
+                      {% elseif selectedOrgDefined and id == selectedOrg %}
+                        {% set selected = 'checked="checked"' %}
+                      {% else %}
+                        {% set selected = '' %}
+                      {% endif %}
+                      {% if orgDesc %}
+                        <label class="radioOrg txt1">
+                          <input type="radio" name="organization" value="{{ id }}" {{ selected }}>
+                          {{ orgDesc|trans }}
+                        </label>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                </div>
+                {% endif %}
+
+                <div class="col-12">
+                  <div class="d-grid my-3">
+                    <button class="btn btn-lg main-button" type="submit">{% trans %}Login{% endtrans %}</button>
+                  </div>
+                </div>
+                <div class="text-center mb-3 p-4">
+                  <img src="{{ asset('images/logo/logo-feds.svg', 'themeRedIRIS') }}" alt="Federation Logo" class="img-fluid img-card w-100">
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
+  </div>
 
+  <style>
+    .image-container {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    .card-body {
+      background: rgba(255,255,255,0.96);
+      border-radius: 1rem;
+      box-shadow: 0 8px 32px 0 #22306626, 0 1.5px 10px #0d6efd20;
+    }
+    .login-card-wrapper {
+      max-width: 500px;
+      margin-right: 3vw;
+    }
+    @media (max-width: 991.98px) {
+      .login-card-wrapper {
+        margin: 0 auto !important;
+        max-width: 100% !important;
+      }
+      .row.justify-content-end {
+        justify-content: center !important;
+      }
+    }
+    body {
+      overflow-x: hidden;
+    }
+  </style>
 
 {% endblock %}
