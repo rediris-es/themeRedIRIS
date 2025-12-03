@@ -15,8 +15,9 @@ class RedIRISController implements TemplateControllerInterface
     {
         $passw_changer_url = getenv('PWD_CHANGER_URL', true) ?: "";
         $data['extra_info'] = 'Extra information to use in your template';
+        $show_forgot_password = getenv('SHOW_FORGOT_PASSWORD', true) ?: "false";
 
-        if ( $passw_changer_url != "" ){
+        if ( $show_forgot_password == "true" ){
                 $data['cambiador'] = $passw_changer_url;
         }
 
