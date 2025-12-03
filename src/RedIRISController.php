@@ -13,17 +13,11 @@ class RedIRISController implements TemplateControllerInterface
 
     public function display(array &$data): void
     {
-        $passw_changer_local = getenv('PASSW_CHANGER_LOCAL', true) ?: "";
-        $passw_changer_remoto = getenv('PASSW_CHANGER_REMOTE', true) ?: "";
-        $passw_changer_type = getenv('PASSW_CHANGER_TYPE', true) ?: "";
-
+        $passw_changer_url = getenv('PWD_CHANGER_URL', true) ?: "";
         $data['extra_info'] = 'Extra information to use in your template';
-        
-        if ($passw_changer_type == "local" && $passw_changer_local != ""){
-                $data['cambiador'] = $passw_changer_local;
-        }
-        elseif($passw_changer_type == "remote" && $passw_changer_remoto != ""){
-                $data['cambiador'] = $passw_changer_remoto;
+
+        if ( $passw_changer_url != "" ){
+                $data['cambiador'] = $passw_changer_url;
         }
 
         $data['fondos'] = [];
