@@ -1,0 +1,96 @@
+# Spanish translations for themeRedIRIS.
+# Las referencias son relativas a la raíz del módulo.
+# Las cadenas sin trans en el origen se catalogan para su futura integración:
+# este archivo por sí solo no activa su traducción ni cambia el dominio
+# utilizado por las plantillas que sobrescriben las de otros módulos.
+# Los textos dinámicos errorcodes y orgDesc no se definen en este módulo.
+# Las claves authorize:Authorize:403_header, authorize:Authorize:403_text
+# y status:logout remiten a catálogos externos y no se redefinen aquí.
+# Se excluyen bibliotecas de terceros, marcas y textos de depuración.
+msgid ""
+msgstr ""
+"Project-Id-Version: themeRedIRIS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-06 10:08+0100\n"
+"PO-Revision-Date: 2026-11-06 10:08+0100\n"
+"Last-Translator: \n"
+"Language-Team: Spanish\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. Cadenas ya marcadas con trans en las plantillas.
+#: themes/RedIRIS/core/loginuserpass.twig:1
+msgid "Enter your username and password"
+msgstr "Introduce tu nombre de usuario y contraseña"
+
+#. Conservar las etiquetas HTML.
+#: themes/RedIRIS/core/loginuserpass.twig:26
+msgid ""
+"You are now accessing a pre-production system. This authentication setup is "
+"for testing and pre-production verification only. If someone sent you a link "
+"that pointed you here, and you are not <i>a tester</i> you probably got the "
+"wrong link, and should <b>not be here</b>."
+msgstr ""
+"Estás accediendo a un sistema de preproducción. Esta configuración de "
+"autenticación está destinada únicamente a pruebas y verificaciones de "
+"preproducción. Si alguien te ha enviado un enlace a esta página y no eres "
+"<i>una persona encargada de las pruebas</i>, probablemente has recibido un "
+"enlace incorrecto y <b>no deberías estar aquí</b>."
+
+#. El control está dentro de un comentario HTML, pero contiene código Twig.
+#: themes/RedIRIS/core/loginuserpass.twig:75
+msgid "Remember me"
+msgstr "Recordarme"
+
+#: themes/RedIRIS/core/loginuserpass.twig:81
+msgid "He olvidado mi contraseña"
+msgstr "He olvidado mi contraseña"
+
+#: themes/RedIRIS/core/loginuserpass.twig:89
+msgid "Organization"
+msgstr "Organización"
+
+#: themes/RedIRIS/core/loginuserpass.twig:113
+msgid "Login"
+msgstr "Iniciar sesión"
+
+#: themes/RedIRIS/default/_header.twig:8
+msgid "Logo"
+msgstr "Logotipo"
+
+#: themes/RedIRIS/default/_header.twig:53
+msgid "Language"
+msgstr "Idioma"
+
+#. Textos y atributos de las plantillas todavía sin trans.
+#: themes/RedIRIS/core/loginuserpass.twig:47
+msgid "SSO Logo"
+msgstr "Logotipo de inicio de sesión único"
+
+#: themes/RedIRIS/core/loginuserpass.twig:53
+msgid "User is required"
+msgstr "El nombre de usuario es obligatorio"
+
+#: themes/RedIRIS/core/loginuserpass.twig:54
+msgid "Nombre de usuario"
+msgstr "Nombre de usuario"
+
+#: themes/RedIRIS/core/loginuserpass.twig:57
+msgid "Nombre usuario"
+msgstr "Nombre de usuario"
+
+#: themes/RedIRIS/core/loginuserpass.twig:62
+msgid "Password is required"
+msgstr "La contraseña es obligatoria"
+
+#: themes/RedIRIS/core/loginuserpass.twig:63
+#: themes/RedIRIS/core/loginuserpass.twig:65
+msgid "Contraseña"
+msgstr "Contraseña"
+
+#: themes/RedIRIS/core/loginuserpass.twig:117
+msgid "Federation Logo"
+msgstr "Logotipo de la federación"
